@@ -44,6 +44,7 @@ const (
 )
 
 // Interface is an abstract interface for testability.  It abstracts the interface of docker client.
+//go:generate mockgen -source=client.go  -destination=testing/mock_client.go -package=testing Interface
 type Interface interface {
 	ListContainers(options dockertypes.ContainerListOptions) ([]dockertypes.Container, error)
 	InspectContainer(id string) (*dockertypes.ContainerJSON, error)

@@ -16,6 +16,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+//go:generate mockgen -source=plugins.go  -destination=testing/mock_network_plugin.go -package=testing NetworkPlugin
 package network
 
 import (

@@ -16,6 +16,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+//go:generate mockgen -source=interface.go  -destination=mockstorageaccountclient/interface.go -package=mockstorageaccountclient Interface
 package storageaccountclient
 
 import (
@@ -35,8 +36,6 @@ const (
 )
 
 // Interface is the client interface for StorageAccounts.
-// Don't forget to run the following command to generate the mock client:
-// mockgen -source=$GOPATH/src/k8s.io/kubernetes/staging/src/k8s.io/legacy-cloud-providers/azure/clients/storageaccountclient/interface.go -package=mockstorageaccountclient Interface > $GOPATH/src/k8s.io/kubernetes/staging/src/k8s.io/legacy-cloud-providers/azure/clients/storageaccountclient/mockstorageaccountclient/interface.go
 type Interface interface {
 	// Create creates a StorageAccount.
 	Create(ctx context.Context, resourceGroupName string, accountName string, parameters storage.AccountCreateParameters) *retry.Error

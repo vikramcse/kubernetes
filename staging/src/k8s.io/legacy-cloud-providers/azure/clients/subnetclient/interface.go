@@ -16,6 +16,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+//go:generate mockgen -source=interface.go  -destination=mocksubnetclient/interface.go -package=mocksubnetclient Interface
 package subnetclient
 
 import (
@@ -31,8 +32,6 @@ const (
 )
 
 // Interface is the client interface for Subnet.
-// Don't forget to run the following command to generate the mock client:
-// mockgen -source=$GOPATH/src/k8s.io/kubernetes/staging/src/k8s.io/legacy-cloud-providers/azure/clients/subnetclient/interface.go -package=mocksubnetclient Interface > $GOPATH/src/k8s.io/kubernetes/staging/src/k8s.io/legacy-cloud-providers/azure/clients/subnetclient/mocksubnetclient/interface.go
 type Interface interface {
 	// Get gets a Subnet.
 	Get(ctx context.Context, resourceGroupName string, virtualNetworkName string, subnetName string, expand string) (result network.Subnet, rerr *retry.Error)

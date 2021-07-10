@@ -16,6 +16,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+//go:generate mockgen -source=interface.go  -destination=mockroutetableclient/interface.go -package=mockroutetableclient Interface
 package routetableclient
 
 import (
@@ -31,8 +32,6 @@ const (
 )
 
 // Interface is the client interface for RouteTable.
-// Don't forget to run the following command to generate the mock client:
-// mockgen -source=$GOPATH/src/k8s.io/kubernetes/staging/src/k8s.io/legacy-cloud-providers/azure/clients/routetableclient/interface.go -package=mockroutetableclient Interface > $GOPATH/src/k8s.io/kubernetes/staging/src/k8s.io/legacy-cloud-providers/azure/clients/routetableclient/mockroutetableclient/interface.go
 type Interface interface {
 	// Get gets a RouteTable.
 	Get(ctx context.Context, resourceGroupName string, routeTableName string, expand string) (result network.RouteTable, rerr *retry.Error)
