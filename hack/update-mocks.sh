@@ -44,10 +44,6 @@ find_files() {
 
 cd "${KUBE_ROOT}"
 
-# for MOCKFILE in $(find_files | xargs git grep --files-with-matches -e '//go:generate mockgen'); do
-#   go generate -v $MOCKFILE
-# done
-
-
-go generate -v staging/src/k8s.io/legacy-cloud-providers/azure/clients/vmssclient/interface.go
-# go generate -v pkg/kubelet/dockershim/network/plugins.go
+for MOCKFILE in $(find_files | xargs git grep --files-with-matches -e '//go:generate mockgen'); do
+  go generate -v $MOCKFILE
+done

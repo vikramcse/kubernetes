@@ -1,4 +1,5 @@
 // +build !dockerless
+//go:generate mockgen -source plugins.go  -destination testing/mock_network_plugin.go -package testing
 
 /*
 Copyright 2014 The Kubernetes Authors.
